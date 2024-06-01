@@ -21,7 +21,7 @@ void initLog()
         logg[i] = logg[i/2] + 1;
 }
 
-void build(vector<int>&a)
+void build(vector<int>&a) //O(nlogn)
 {
     int N = a.size();
     for (int i = 0; i < N; i++)
@@ -32,7 +32,7 @@ void build(vector<int>&a)
             st[i][j] = max(st[i][j-1], st[i + (1 << (j - 1))][j - 1]);
 }
 
-int query(int L, int R)
+int query(int L, int R) //O(1)
 {
     int j = logg[R - L + 1];
     int maxi = max(st[L][j], st[R - (1 << j) + 1][j]);
