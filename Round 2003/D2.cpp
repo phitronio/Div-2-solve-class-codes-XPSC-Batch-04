@@ -139,8 +139,7 @@ void TEST_CASES()
 
     for(int i=0;i<=min(maxi,m);i++)
     {
-        to_go[i] = max({to_go[i], baki_ans, i});
-        ans += to_go[i];
+        ans += max({to_go[i], baki_ans, i});
     }
 
     cout<<ans<<"\n";
