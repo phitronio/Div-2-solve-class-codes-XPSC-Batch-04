@@ -13,9 +13,9 @@ typedef pair<int,int> pii;
 
 int n,m;
 vector<int>a[N];
-vector<int>holes[N];
+vector<int>missing_numbers[N];
 
-vector<int> find_holes(vector<int>&a)
+vector<int> find_missing_numbers(vector<int>&a)
 {
     vector<int>ans;
     set<int>st(a.begin(),a.end());
@@ -52,7 +52,7 @@ void TEST_CASES()
     for(int i=0; i<n; i++)
     {
         a[i].clear();
-        holes[i].clear();
+        missing_numbers[i].clear();
     }
     ll maxi = 0;
     for(int i=0; i<n; i++)
@@ -64,8 +64,8 @@ void TEST_CASES()
         {
             cin>>a[i][j];
         }
-        holes[i] = find_holes(a[i]);
-        maxi = max(maxi, (ll)holes[i].back());
+        missing_numbers[i] = find_missing_numbers(a[i]);
+        maxi = max(maxi, (ll)missing_numbers[i].back());
     }
     ll ans = maxi * min((maxi + 1), (ll)m+1) + get_sum(maxi + 1, m);
     cout<<ans<<"\n";

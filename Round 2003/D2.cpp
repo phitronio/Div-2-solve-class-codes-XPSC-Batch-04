@@ -13,9 +13,9 @@ typedef pair<int,int> pii;
 
 int n,m;
 vector<int>a[N];
-vector<int>holes[N];
+vector<int>missing_numbers[N];
 
-vector<int> find_holes(vector<int>&a)
+vector<int> find_missing_numbers(vector<int>&a)
 {
     vector<int>ans;
     set<int>st(a.begin(),a.end());
@@ -74,7 +74,7 @@ void TEST_CASES()
     for(int i=0; i<n; i++)
     {
         a[i].clear();
-        holes[i].clear();
+        missing_numbers[i].clear();
     }
 
     int maxi = 0;
@@ -87,8 +87,8 @@ void TEST_CASES()
         {
             cin>>a[i][j];
         }
-        holes[i] = find_holes(a[i]);
-        maxi = max(maxi, holes[i].back());
+        missing_numbers[i] = find_missing_numbers(a[i]);
+        maxi = max(maxi, missing_numbers[i].back());
     }
 
     for(int i=0;i<=maxi;i++)
@@ -101,9 +101,9 @@ void TEST_CASES()
 
     for(int i=0;i<n;i++)
     {
-        adj[holes[i][0]].push_back(holes[i][1]);
-        adj[holes[i][1]].push_back(holes[i][0]);
-        out[holes[i][0]]++;
+        adj[missing_numbers[i][0]].push_back(missing_numbers[i][1]);
+        adj[missing_numbers[i][1]].push_back(missing_numbers[i][0]);
+        out[missing_numbers[i][0]]++;
     }
 
     ll ans = get_sum(maxi + 1, m);
